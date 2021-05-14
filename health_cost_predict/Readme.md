@@ -8,12 +8,13 @@
 
 ## Random forest regression
 
-- Model học dựa trên kỹ thuật `Bagging` (thuộc nhánh `Ensemble learning`)
+- Model học dựa trên kỹ thuật `Bootstraping` (thuộc nhánh `Ensemble learning`)
 - Các bước thực hiện
-    - Tạo các tập huấn luyện bằng kỹ thuật `Boostrap`:
-        - Mô tả kỹ thuật `Boostrap`: Chọn ngẫu nhiên có hoàn lại hoặc không hoàn lại các mẫu trong tập huấn luyện và bỏ vào từng `bag` để tiến hành học
-    - Tại mỗi `bag`, chọn random các thuộc tính để tiến hành xây dựng cây hồi quy
-    - Siêu tham số cần xác định trước khi chạy: Số cây được sinh ra (Cần thử nhiều giá trị để chọn ra số cây tốt nhất)
+    - Tạo các tập huấn luyện (`bags`): Chọn ngẫu nhiên có hoàn lại hoặc không hoàn lại các mẫu trong tập huấn luyện và bỏ vào từng `bag` để tiến hành học
+    - Tại mỗi `bag`, chọn random các thuộc tính để tiến hành xây dựng cây hồi quy.
+    - Siêu tham số cần xác định trước khi chạy (Cần thử nhiều giá trị để chọn ra số cây tốt nhất): 
+        - Số cây được sinh ra
+        - Số lượng thuộc tính sử dụng khi sinh một cây hồi quy.
 - Quá trình xây dựng cây hồi quy trên mỗi `bag` (áp dụng cho cả thuộc tính liên tục và thuộc tính rời rạc):
     - Một vài siêu tham số:
         - Kích thước của `bag`: Số mẫu trong một `bag`, được chọn là căn bậc hai của số lượng mẫu trong tập train
@@ -21,7 +22,7 @@
         - Chiều cao tối đa của cây: Cần thử nhiều giá trị để chọn ra giá trị tốt nhất
         - Số lượng mẫu dữ liệu tối thiểu ở node lá: Cần thử nhiều giá trị để chọn ra giá trị tốt nhất
     - Đối với dữ liệu bao gồm 1 thuộc tính input và 1 thuộc tính output:
-        - Vẽ biểu đồ scatter biểu diễn dữ liệu
+        - Vẽ biểu đồ scatter plot biểu diễn dữ liệu
         - Tại mỗi giá trị `x_i` dọc theo trục hoành, tiến hành chia đôi dữ liệu thành 2 tập con lần lượt chứa các phần tử `x` ở bên phải `x_i` và `x` ở bên trái `x_i`
         - Tại mỗi điểm chia, ta được 2 cây con. Tính độ "tốt" của 2 cây con này theo một thang đo đã định nghĩa trước. Từ đó, chọn được điểm chia dữ liệu tốt nhất
         - Lấy trung bình giá trị output tại mỗi cây con, ta được output chính thức của cây
