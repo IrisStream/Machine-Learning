@@ -46,8 +46,74 @@
 
 ## Chọn các siêu tham số
 
-- Theo bài báo khỉ gió gì đó, số cây con thường nằm trong khoảng 
+- Sử dụng kỹ thuật Cross Validation để chọn siêu tham số. `k = 3 folds`
+- Tạo không gian siêu tham số
+    - Số cây sinh ra: `n_estimators = [200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000]`
+    - Số lượng thuộc tính lớn nhất được sử dụng khi xây dựng cây hồi quy: `max_features = ['auto', 'sqrt']`
+        - `auto`: Tương đương số lượng thuộc tính của cả bộ dữ liệu
+        - `sqrt`: Tương đương căn bậc 2 (làm tròn số) của số lượng thuộc tính của cả bộ dữ liệu
+    - Chiều cao lớn nhất của cây hồi quy: `max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]` - `None` biểu thị chiều cao không giới hạn
+    - Số lượng mẫu tối thiểu ở node lá: `min_samples_leaf = [1, 2, 4]`
+    - Learning rate (đối với Gradient Boosting): `learning_rate = [0.01, 0.05, 0.1]`
+
+- Vì không gian tìm kiếm là quá lớn, nên ta chỉ tiến hành tìm kiếm trong `max_iter=100` lần. Nói cách khác, ta lặp lại `max_iter=100` lần các công việc sau:
+    - Chọn ngẫu nhiên giá trị siêu tham số từ không gian tìm kiếm
+    - Tính toán độ lỗi đối với bộ tham số vừa chọn
+
+- Kết thúc bước này, ta chọn được bộ tham số có chất lượng tốt nhất trong số 100 bộ tham số vừa duyệt qua:
+    - Đối với Random Forest:
+        - `n_estimators: 600`,
+        - `min_samples_split: 2`,
+        - `min_samples_leaf: 4`,
+        - `max_features: 'auto'`,
+        - `max_depth: 40`
+    - Đối với Gradient Boosting:
+        - `n_estimators: 1000`,
+        - `min_samples_split: 2`,
+        - `min_samples_leaf: 1`,
+        - `max_features: 'sqrt'`,
+        - `max_depth: 10`,
+        - `learning_rate: 0.01`
+
+- Giả định rằng các bộ tham số lân cận của nó cũng có chất lượng gần tương đương, tiến hành tìm kiếm vét cạn các lân cận với hy vọng cải thiện chất lượng của bộ tham số hiện tại
+    - Đối với Random Forest:
+        - `n_estimators: [600, 800, 1000]`,
+        - `min_samples_split: [2, 4, 5]`,
+        - `min_samples_leaf: [4, 8, 12]`,
+        - `max_features: ['auto']`,
+        - `max_depth: [30, 40, 50, 60, None]`
+    - Đối với Gradient Boosting:
+        - `n_estimators: [3000, 5000]`,
+        - `min_samples_split: [2, 5]`,
+        - `min_samples_leaf: [1, 2]`,
+        - `max_features: ['auto', 'sqrt']`,
+        - `max_depth: [60, 80, 100, None]`,
+        - `learning_rate: 0.01`
+
+## Đánh giá trên tập test
+
+- Linear Regression
+    - Mean Absolute Error: 4243.654
+    - Mean Squared Error: 35117755.736
+    - Root Mean Squared Error: 5926.024
+    - R2 score : 0.767
+    - Accuracy: 0.55532
+
+- Model Random Forest
+    - Mean Absolute Error: 2592.958
+    - Mean Squared Error: 20547734.667
+    - Root Mean Squared Error: 4532.961
+    - R2 score : 0.864
+    - Accuracy: 0.72440
+
+- Model Gradient Boosting
+    - Mean Absolute Error: 2545.602
+    - Mean Squared Error: 23337424.402
+    - Root Mean Squared Error: 4830.882
+    - R2 score : 0.845
+    - Accuracy: 0.72011
 
 ## Tham khảo
 - [Cài đặt Random Forest bằng sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+- [Cài đặt Gradient Boosting bằng sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)
 - [Thuật toán Gradient Boost](https://towardsdatascience.com/machine-learning-part-18-boosting-algorithms-gradient-boosting-in-python-ef5ae6965be4)
