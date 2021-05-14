@@ -90,6 +90,24 @@
         - `max_depth: [60, 80, 100, None]`,
         - `learning_rate: 0.01`
 
+- Kết quả thu được sau khi tìm kiếm trong không gian lân cận sẽ được dùng để dự đoán tập test
+    - Đối với Random Forest
+        - `n_estimators: 1000`,
+        - `min_samples_split: 2`,
+        - `min_samples_leaf: 1`,
+        - `max_features: 'sqrt'`,
+        - `max_depth: 10`,
+        - `learning_rate: 0.01`
+
+
+    - Đối với Gradient Boosting
+        - `learning_rate: 0.01`,
+        - `max_depth: 60`,
+        - `max_features: 'sqrt'`,
+        - `min_samples_leaf: 1`,
+        - `min_samples_split: 2`,
+        - `n_estimators: 5000`
+
 ## Đánh giá trên tập test
 
 - Linear Regression
