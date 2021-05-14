@@ -40,7 +40,7 @@
     3. Tạo cây hồi quy dự đoán giá trị `residual` (phương pháp đã được trình bày ở trên)
     4. Tính giá trị dự đoán lần tiếp theo `pred_(i + 1), (i chạy từ 0)`
         - Mỗi điểm dữ liệu trong tập train được đưa qua cây hồi quy bên trên. Ta thu được giá trị ước lượng của `residual` gọi là `predResidual_(i-1), (i chạy từ 0)`
-        - `pred_(i+1) = meanCharges + learningRate * predResidual_(i)`
+        - `pred_(i+1) = pred_i + learningRate * predResidual_(i)`
     5. Tính giá trị `residual_(i+1) = actualValue - pred_(i+1)`
     6. Lặp lại các bước từ 3 đến 5 cho đến khi số lần lặp vượt quá `max_iter` hoặc giá trị cần ước lượng không đổi.
 
