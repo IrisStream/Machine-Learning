@@ -4,6 +4,8 @@ __Deadline chung: 5h chiều__
 
 link meeting: [Meeting](https://drive.google.com/drive/folders/1yFp240l67bgkiS9rJ0o0IQ0n6QyzC8CK?usp=sharing)
 
+link video: [Video](https://drive.google.com/drive/folders/1CSk2Inga7Zk2goAIRCtF-e94_KUIjL_E)
+
 ## Speaker encoder (24/6)
 
 1. Đọc lý thuyết: 26/6
