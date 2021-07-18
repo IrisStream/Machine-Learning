@@ -1,0 +1,11 @@
+ĐỒ ÁN CUỐI KÌ
+
+Tên mô hình nghiên cứu: 
+	Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis (SV2TTS)
+
+Thành viên:
+	+ 18120078 - Ngô Phù Hữu Đại Sơn
+	+ 18120201 - Nguyễn Bảo Long
+	+ 18120253 - Mai Ngọc Tú
+
+Link: https://drive.google.com/drive/folders/1lI6zCKk29bjVlnMLfSBpeTvEkSy6cQOS
