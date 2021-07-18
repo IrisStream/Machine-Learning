@@ -1,6 +1,7 @@
 # SV2TTS
 
 **Deadline chung: 5h chiều**
+link nộp bài: [Assignment](https://drive.google.com/drive/folders/1lI6zCKk29bjVlnMLfSBpeTvEkSy6cQOS?usp=sharing)
 
 link meeting: [Meeting](https://drive.google.com/drive/folders/1yFp240l67bgkiS9rJ0o0IQ0n6QyzC8CK?usp=sharing)
 
